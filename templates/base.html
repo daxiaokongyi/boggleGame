@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/app.css">
+    <title>{% block title %} {% endblock %}</title>
+</head>
+<body>
+    <h1>Welcome to Boggle Game</h1><br>
+    <section>
+        <p class="msg"></p>
+        <p>Your Score: <span class="score">0</span></p>
+        <p class="timer"></p><br>
+        <form action="" class="choose_size">
+            <input type="text" name="size" class="size" autofocus>
+            <button>Go</button>
+        </form>
+    </section><br>
+    {% block content %} {% endblock %}
+    <script src="http://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/static/app.js"></script>
+    <script> 
+        let boggleGame = new BoggleGame();
+    </script>
+</body>
+</html>

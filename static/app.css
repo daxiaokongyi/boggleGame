@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 2rem auto;
+    text-align: center;
+    background-color: tan; 
+}
+
+table {
+    margin: auto;
+}
+
+td {
+    border: 1px solid blue;
+    padding: 1rem;
+    border-radius: 0.3rem;
+    transition-property: background, transform;
+    transition-duration: 1.3s;
+}
+
+td:hover {
+    background-color: antiquewhite;
+    transform: scale(1.2);
+}
+
+.msg.ok {
+    background-color: rgb(4, 179, 91);
+    padding: 0.5rem 0;
+    margin: 0.5rem 0;
+    width: 100%;
+}
+
+.msg.err {
+    background-color: rgb(233, 76, 76);
+    padding: 0.5rem;
+    margin: 0.5rem;
+    width: 100%;
+}
+
