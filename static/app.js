@@ -5,7 +5,7 @@ class BoggleGame {
         this.timer = setInterval(this.tick.bind(this), 1000);
         this.showTimer();
         $('.add_word').on('submit', this.handleSubmit.bind(this));
-        $('.choose_size').on('submit', this.handleSize.bind(this));
+        // $('.choose_size').on('submit', this.handleSize.bind(this));
     }
 
     showMessage(msg, cls) {
@@ -34,11 +34,11 @@ class BoggleGame {
         }
     }
 
-    async handleSize(evt) {
-        evt.preventDefault();
-        console.log($('.size').val());
-        await axios.post('/size', {size: $('.size').val()});
-    }
+    // async handleSize(evt) {
+    //     evt.preventDefault();
+    //     console.log($('.size').val());
+    //     const res = await axios.post('/size', {size: $('.size').val()});
+    // }
 
     async handleSubmit(evt) {
         evt.preventDefault();

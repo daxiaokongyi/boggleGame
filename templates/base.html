@@ -12,8 +12,9 @@
         <p class="msg"></p>
         <p>Your Score: <span class="score">0</span></p>
         <p class="timer"></p><br>
-        <form action="" class="choose_size">
-            <input type="text" name="size" class="size" autofocus>
+        <form action="/size" method="POST"  class="choose_size">
+            <label for="size">Size of Board: </label>
+            <input type="number" name="size" class="size" min="5" max="10" value="5" autofocus>
             <button>Go</button>
         </form>
     </section><br>
