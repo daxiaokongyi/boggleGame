@@ -34,12 +34,6 @@ class BoggleGame {
         }
     }
 
-    // async handleSize(evt) {
-    //     evt.preventDefault();
-    //     console.log($('.size').val());
-    //     const res = await axios.post('/size', {size: $('.size').val()});
-    // }
-
     async handleSubmit(evt) {
         evt.preventDefault();
         // Get input word from form

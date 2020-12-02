@@ -5,6 +5,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'boggleKey'
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
+# app.debug = True
     
 boggle_game = Boggle()
 debug = DebugToolbarExtension(app)
@@ -25,7 +26,12 @@ def display_board():
 
     # add board into session
     session['board'] = board
-    return render_template('home.html', board = board)
+
+    size = session.get('size')
+    if not size:
+        size = 5
+
+    return render_template('home.html', board = board, size= size)
 
 @app.route('/size', methods=["POST"])
 def getSize():
@@ -55,7 +61,7 @@ def game_result():
 
     highest_score = max(session.get('highest_score', 0), score)
     session['highest_score'] = highest_score
-    
+
     play_round = session.get('play_round', 0) + 1
     session['play_round'] = play_round
 

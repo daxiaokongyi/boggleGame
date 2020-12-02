@@ -40,3 +40,6 @@ td:hover {
     width: 100%;
 }
 
+ul {
+    list-style-position: inside;
+}
