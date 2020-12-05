@@ -3,6 +3,7 @@ class BoggleGame {
         this.words = new Set();
         this.secs = secs;
         this.timer = setInterval(this.tick.bind(this), 1000);
+        this.score = 0
         this.showTimer();
         $('.add_word').on('submit', this.handleSubmit.bind(this));
         // $('.choose_size').on('submit', this.handleSize.bind(this));
@@ -52,6 +53,7 @@ class BoggleGame {
             this.showMessage(`${currentWord} is valid and added`, 'ok' );
             this.words.add(currentWord);
             this.showWord(currentWord);
+            this.score += currentWord.length;
         } else if (res.data.result === 'not-on-board') {
             this.showMessage(`${currentWord} is not a valid word in this board`, 'err');
         } else if (res.data.result === 'not-word') {
@@ -59,18 +61,18 @@ class BoggleGame {
         }
         // reset word input
         $('.word').val('');
-        // show the current score
-        this.showScore(this.words.size);
+
+        this.showScore(this.score);
     }   
 
     async gameResult() {
         // hide input
         $('.add_word').hide();
-        const res = await axios.post('/post-score', {score: this.words.size});
+        const res = await axios.post('/post-score', {score: this.score});
         let highestScore = res.data['result'];
         let round = res.data['round'];
 
-        if (this.words.size === highestScore && round > 1) {
+        if (this.score === highestScore && round > 1) {
             // $('.highest').text(`Congratulations! You got new record ${highestScore}`)
             this.showMessage(`Congratulations! You got new record ${highestScore}`, 'ok')
         } else {
